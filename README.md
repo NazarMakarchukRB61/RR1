@@ -9,48 +9,48 @@
 
 В цій частині коду ми оголошуємо функцію для обчислення суми ряду та створюємо необхідні змінні.
 
-double S = 1.0;
-double power = 1.0;
-double denominator;
-double term;
-int n;
+    double S = 1.0;
+    double power = 1.0;
+    double denominator;
+    double term;
+    int n;
 
 В цій частині коду ми виконуємо послідовне обчислення членів ряду за допомогою циклу for. Цикл починається з n = 1 та повторюється до досягнення значення N.
 
-for (n = 1; n <= N; n++) {
+    for (n = 1; n <= N; n++) {
     power = power * a;
 
 В цій частині коду ми обчислюємо знаменник дробу.
 
-if (n % 2 != 0) {
+    if (n % 2 != 0) {
     denominator = a + n;
-} else {
+    } else {
     denominator = a - n;
-}
+    }
 
 Тут ми перевіряємо знаменник на рівність нулю.
 
-if (denominator == 0.0) {
+    if (denominator == 0.0) {
     continue;
-}
+    }
 
 В цій частині коду ми обчислюємо поточний член ряду. Залежно від парності n визначається знак результату, після чого виконується ділення степеня a на обчислений знаменник.
 
-if (n % 2 != 0) {
+    if (n % 2 != 0) {
     term = -power / denominator;
-} else {
+    } else {
     term = power / denominator;
-}
+    }
 
 Після обчислення поточного члена додаємо його до загальної суми S.
 
-S = S + term;
+    S = S + term;
 
 Після завершення циклу функція повертає обчислену суму за допомогою оператора return.
 
 В останній частині програми знаходиться головна функція main(). У ній ми вводимо значення a та N з клавіатури, перевіряємо правильність N, викликаємо функцію calculateSeriesSum() та виводимо результат на екран.
 
-int main() {
+    int main() {
 
     double a = 0.0;
     double result;
@@ -84,7 +84,7 @@ int main() {
 
 Оголошення функції для обчислення суми
 
-double calculateSum(int N, double A[N][N]) {
+    double calculateSum(int N, double A[N][N]) {
 
     double sum = 0.0;
     int i, j;
@@ -111,19 +111,19 @@ return sum;
 
 В головній функції main() ми оголошуємо необхідні змінні та просимо ввести розмір квадратної матриці.
 
-int N = 0;
-int i, j;
-double result;
+    int N = 0;
+    int i, j;
+    double result;
 
-printf("Enter matrix size N: ");
-scanf("%d", &N);
+    printf("Enter matrix size N: ");
+    scanf("%d", &N);
 
 Після введення розміру перевіряємо, чи є він правильним. Якщо N менше одиниці, програма виводить повідомлення про помилку та завершує роботу.
 
-if (N < 1) {
+    if (N < 1) {
     printf("Error: N must be >= 1\n");
     return 1;
-}
+    }
 
 Створення та заповнення матриці
 
@@ -131,27 +131,27 @@ if (N < 1) {
 
 double A[N][N];
 
-for (i = 0; i < N; i++) {
-    for (j = 0; j < N; j++) {
-        scanf("%lf", &A[i][j]);
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            scanf("%lf", &A[i][j]);
+        }
     }
-}
 
 Виведення матриці та результату
 
 Після заповнення матриці ми виводимо її елементи на екран за допомогою двох вкладених циклів for.
 
-printf("\nMatrix A:\n");
+    printf("\nMatrix A:\n");
 
-for (i = 0; i < N; i++) {
-    for (j = 0; j < N; j++) {
-        printf("%8.2lf", A[i][j]);
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            printf("%8.2lf", A[i][j]);
+        }
+        printf("\n");
     }
-    printf("\n");
-}
 
 В кінці програми викликаємо функцію calculateSum(), передаючи їй розмір матриці та сам масив. Отримане значення записується у змінну result, після чого виводиться на екран.
 
-result = calculateSum(N, A);
+    result = calculateSum(N, A);
 
-printf("\nSum of elements = %.2lf\n", result);
+    printf("\nSum of elements = %.2lf\n", result);
